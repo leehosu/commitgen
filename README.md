@@ -18,18 +18,32 @@
 
 ## 설치
 
-### 바이너리 다운로드 (추천)
+### Homebrew (추천) 🍺
+
+```bash
+# Tap 추가
+brew tap leehosu/tap
+
+# 설치
+brew install commitgen
+
+# 확인
+commitgen version
+```
+
+### 바이너리 다운로드
 
 최신 릴리즈에서 OS에 맞는 바이너리를 다운로드하세요:
 [Releases](https://github.com/leehosu/commitgen/releases)
 
 ```bash
 # macOS/Linux
+tar -xzf commitgen_*_*.tar.gz
 chmod +x commitgen
 sudo mv commitgen /usr/local/bin/
 
 # Windows
-# commitgen.exe를 PATH에 추가
+# commitgen.exe를 압축 해제 후 PATH에 추가
 ```
 
 ### Go install

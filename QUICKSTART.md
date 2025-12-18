@@ -4,7 +4,18 @@ commitgen을 5분 안에 시작해보세요! 🚀
 
 ## 1단계: 설치
 
-### 옵션 A: 바이너리 다운로드 (권장)
+### 옵션 A: Homebrew (권장) 🍺
+
+```bash
+# Tap 추가 및 설치
+brew tap leehosu/tap
+brew install commitgen
+
+# 확인
+commitgen version
+```
+
+### 옵션 B: 바이너리 다운로드
 
 [Releases 페이지](https://github.com/leehosu/commitgen/releases)에서 OS에 맞는 파일을 다운로드하세요.
 
@@ -33,7 +44,7 @@ commitgen version
 commitgen version
 ```
 
-### 옵션 B: Go install
+### 옵션 C: Go install
 
 ```bash
 go install github.com/leehosu/commitgen@latest

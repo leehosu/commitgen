@@ -48,6 +48,23 @@ archives:
 checksum:
   name_template: 'checksums.txt'
 
+brews:
+  - name: commitgen
+    repository:
+      owner: leehosu
+      name: homebrew-tap
+      token: "{{ .Env.GITHUB_TOKEN }}"
+    directory: Formula
+    homepage: https://github.com/leehosu/commitgen
+    description: "AI-powered Git commit message generator"
+    license: MIT
+    dependencies:
+      - name: git
+    test: |
+      system "#{bin}/commitgen", "version"
+    install: |
+      bin.install "commitgen"
+
 changelog:
   sort: asc
   filters:
@@ -83,15 +100,22 @@ release:
   footer: |
     ## 설치 방법
     
-    ### macOS/Linux
+    ### Homebrew (macOS/Linux) 🍺
     ```bash
-    # 다운로드 및 설치
+    brew tap leehosu/tap
+    brew install commitgen
+    ```
+    
+    ### 바이너리 다운로드
+    
+    **macOS/Linux:**
+    ```bash
     tar -xzf commitgen_*_*.tar.gz
     chmod +x commitgen
     sudo mv commitgen /usr/local/bin/
     ```
     
-    ### Windows
+    **Windows:**
     ```powershell
     # 압축 해제 후 PATH에 추가
     ```
