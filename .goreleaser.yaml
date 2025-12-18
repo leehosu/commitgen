@@ -48,22 +48,23 @@ archives:
 checksum:
   name_template: 'checksums.txt'
 
-brews:
-  - name: commitgen
-    repository:
-      owner: leehosu
-      name: homebrew-tap
-      token: "{{ .Env.GITHUB_TOKEN }}"
-    directory: Formula
-    homepage: https://github.com/leehosu/commitgen
-    description: "AI-powered Git commit message generator"
-    license: MIT
-    dependencies:
-      - name: git
-    test: |
-      system "#{bin}/commitgen", "version"
-    install: |
-      bin.install "commitgen"
+# Homebrew tap은 수동으로 관리합니다
+# brews:
+#   - name: commitgen
+#     repository:
+#       owner: leehosu
+#       name: homebrew-tap
+#       token: "{{ .Env.GITHUB_TOKEN }}"
+#     directory: Formula
+#     homepage: https://github.com/leehosu/commitgen
+#     description: "AI-powered Git commit message generator"
+#     license: MIT
+#     dependencies:
+#       - name: git
+#     test: |
+#       system "#{bin}/commitgen", "version"
+#     install: |
+#       bin.install "commitgen"
 
 changelog:
   sort: asc
