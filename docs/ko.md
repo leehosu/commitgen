@@ -202,6 +202,45 @@ commitgen config set-commit-language en  # 영어 커밋 메시지
 commitgen config set-ui-language en      # 영어 UI
 ```
 
+## JIRA 통합
+
+commitgen은 브랜치 이름에서 JIRA 이슈 번호를 자동으로 감지하여 커밋 메시지에 추가합니다.
+
+### 작동 방식
+
+브랜치 이름에 JIRA 이슈 패턴(예: `PROJECT-123`, `DEVOPS2-430`)이 있으면 자동으로 감지하여 커밋 메시지 앞에 추가합니다.
+
+**예시:**
+```bash
+# 브랜치 생성
+git checkout -b DEVOPS2-430-add-user-feature
+
+# 커밋 생성
+git add .
+commitgen
+
+# 결과: [DEVOPS2-430] feat: add user authentication
+```
+
+### 설정
+
+```bash
+# JIRA 통합 활성화 (기본값)
+commitgen config set-jira-integration true
+
+# JIRA 통합 비활성화
+commitgen config set-jira-integration false
+```
+
+### 지원하는 패턴
+
+- `PROJECT-123`
+- `ABC-456`
+- `DEVOPS2-430`
+- 일반적인 JIRA 프로젝트 키 + 번호 조합
+
+**참고:** main, master, develop 브랜치에서는 JIRA 이슈 번호가 추가되지 않습니다.
+
 ## 예시
 
 ```bash

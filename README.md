@@ -15,6 +15,7 @@
 - ✨ **AI-powered commit message generation**: Supports OpenAI GPT and Anthropic Claude
 - 📝 **Conventional Commits format**: Industry-standard commit message convention
 - 🌏 **Multilingual support**: Korean/English commit messages and UI
+- 🎫 **JIRA integration**: Auto-add JIRA issue numbers from branch names
 - 🎯 **Simple usage**: Commit with a single command
 - ⚙️ **Flexible configuration**: Choose API keys and providers
 - 🚀 **Cross-platform**: Linux, macOS, Windows support
@@ -112,6 +113,10 @@ commitgen config set-model claude claude-3-5-haiku-20241022
 commitgen config set-commit-language ko  # Commit message language (ko/en)
 commitgen config set-ui-language en      # UI language (ko/en)
 
+# JIRA integration
+commitgen config set-jira-integration true   # Enable JIRA integration
+commitgen config set-jira-integration false  # Disable JIRA integration
+
 # Show current configuration
 commitgen config show
 
@@ -129,6 +134,7 @@ export COMMITGEN_CLAUDE_API_KEY=sk-ant-xxxxx
 export COMMITGEN_PROVIDER=openai
 export COMMITGEN_COMMIT_LANGUAGE=ko  # Commit message language
 export COMMITGEN_UI_LANGUAGE=en      # UI language
+export COMMITGEN_JIRA_INTEGRATION=true  # JIRA integration
 ```
 
 ## Conventional Commits
@@ -201,6 +207,45 @@ commitgen config set-ui-language en      # English UI
 commitgen config set-commit-language en  # English commit messages
 commitgen config set-ui-language en      # English UI
 ```
+
+## JIRA Integration
+
+commitgen automatically detects JIRA issue numbers from branch names and adds them to commit messages.
+
+### How it works
+
+If your branch name contains a JIRA issue pattern (e.g., `PROJECT-123`, `DEVOPS2-430`), it will be automatically detected and added to the beginning of your commit message.
+
+**Example:**
+```bash
+# Create branch
+git checkout -b DEVOPS2-430-add-user-feature
+
+# Generate commit
+git add .
+commitgen
+
+# Result: [DEVOPS2-430] feat: add user authentication
+```
+
+### Configuration
+
+```bash
+# Enable JIRA integration (default)
+commitgen config set-jira-integration true
+
+# Disable JIRA integration
+commitgen config set-jira-integration false
+```
+
+### Supported patterns
+
+- `PROJECT-123`
+- `ABC-456`
+- `DEVOPS2-430`
+- Standard JIRA project key + number combinations
+
+**Note:** JIRA issue numbers are not added when on main, master, or develop branches.
 
 ## Example
 

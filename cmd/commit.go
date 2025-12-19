@@ -86,6 +86,20 @@ func runCommit() error {
 		return fmt.Errorf("%s: %w", msg.ErrorGenerateMessage, err)
 	}
 
+	// JIRA 이슈 번호 추가
+	originalMessage := commitMessage
+	commitMessage, _ = git.FormatCommitMessage(commitMessage, cfg.JiraIntegration)
+	
+	// JIRA 이슈가 추가되었으면 사용자에게 알림
+	if originalMessage != commitMessage {
+		branch, _ := git.GetCurrentBranch()
+		jiraIssue := git.ExtractJiraIssue(branch)
+		if jiraIssue != "" {
+			color.Cyan(msg.JiraIssueDetected, jiraIssue)
+			color.Green(msg.JiraIssueAdded)
+		}
+	}
+
 	// 6. 생성된 메시지 출력
 	fmt.Println()
 	color.Green(msg.MessageGenerated)
@@ -151,6 +165,20 @@ func runCommit() error {
 			commitMessage, err = client.GenerateCommitMessage(systemPrompt, userPrompt)
 			if err != nil {
 				return fmt.Errorf("%s: %w", msg.ErrorGenerateMessage, err)
+			}
+
+			// JIRA 이슈 번호 추가
+			originalMessage := commitMessage
+			commitMessage, _ = git.FormatCommitMessage(commitMessage, cfg.JiraIntegration)
+			
+			// JIRA 이슈가 추가되었으면 사용자에게 알림
+			if originalMessage != commitMessage {
+				branch, _ := git.GetCurrentBranch()
+				jiraIssue := git.ExtractJiraIssue(branch)
+				if jiraIssue != "" {
+					color.Cyan(msg.JiraIssueDetected, jiraIssue)
+					color.Green(msg.JiraIssueAdded)
+				}
 			}
 
 			fmt.Println()

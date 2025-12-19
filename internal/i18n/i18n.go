@@ -34,6 +34,7 @@ type Messages struct {
 	ConfigCommitLanguage string
 	ConfigUILanguage     string
 	ConfigTemplate       string
+	ConfigJiraIntegration string
 	OpenAISettings       string
 	ClaudeSettings       string
 	APIKeyLabel          string
@@ -47,6 +48,7 @@ type Messages struct {
 	ModelSet          string
 	CommitLanguageSet string
 	UILanguageSet     string
+	JiraIntegrationSet string
 
 	// 에러 메시지
 	ErrorNotGitRepo      string
@@ -64,6 +66,10 @@ type Messages struct {
 
 	// Hint 메시지
 	HintSetAPIKey string
+
+	// JIRA 통합
+	JiraIssueDetected string
+	JiraIssueAdded    string
 }
 
 // GetMessages는 지정된 언어에 맞는 메시지를 반환합니다

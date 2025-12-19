@@ -29,24 +29,26 @@ func getEnglishMessages() Messages {
 		EditPromptLabel:  "Commit message",
 
 		// Config
-		ConfigTitle:          "📋 Current configuration:",
-		ConfigProvider:       "Default provider: %s",
-		ConfigCommitLanguage: "Commit message language: %s",
-		ConfigUILanguage:     "UI language: %s",
-		ConfigTemplate:       "Template: %s",
-		OpenAISettings:       "OpenAI settings:",
-		ClaudeSettings:       "Claude settings:",
-		APIKeyLabel:          "  API key: %s",
-		APIKeyNotSet:         "  API key: (not set)",
-		ModelLabel:           "  Model: %s",
-		MaxTokensLabel:       "  Max tokens: %d",
+		ConfigTitle:           "📋 Current configuration:",
+		ConfigProvider:        "Default provider: %s",
+		ConfigCommitLanguage:  "Commit message language: %s",
+		ConfigUILanguage:      "UI language: %s",
+		ConfigTemplate:        "Template: %s",
+		ConfigJiraIntegration: "JIRA integration: %v",
+		OpenAISettings:        "OpenAI settings:",
+		ClaudeSettings:        "Claude settings:",
+		APIKeyLabel:           "  API key: %s",
+		APIKeyNotSet:          "  API key: (not set)",
+		ModelLabel:            "  Model: %s",
+		MaxTokensLabel:        "  Max tokens: %d",
 
 		// Success messages
-		APIKeySaved:       "✓ %s API key saved successfully",
-		ProviderSet:       "✓ Default provider set to %s",
-		ModelSet:          "✓ %s model set to %s",
-		CommitLanguageSet: "✓ Commit message language set to %s",
-		UILanguageSet:     "✓ UI language set to %s",
+		APIKeySaved:        "✓ %s API key saved successfully",
+		ProviderSet:        "✓ Default provider set to %s",
+		ModelSet:           "✓ %s model set to %s",
+		CommitLanguageSet:  "✓ Commit message language set to %s",
+		UILanguageSet:      "✓ UI language set to %s",
+		JiraIntegrationSet: "✓ JIRA integration set to %v",
 
 		// Error messages
 		ErrorNotGitRepo:      "Not a git repository",
@@ -64,5 +66,9 @@ func getEnglishMessages() Messages {
 
 		// Hint messages
 		HintSetAPIKey: "Hint: Set API key with 'commitgen config set-key %s <API_KEY>'",
+
+		// JIRA integration
+		JiraIssueDetected: "🎫 JIRA issue detected: %s",
+		JiraIssueAdded:    "   JIRA issue added to commit message",
 	}
 }

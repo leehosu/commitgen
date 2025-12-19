@@ -19,6 +19,18 @@
 ### 제거
 - 없음
 
+## [0.3.0] - 2024-12-19
+
+### 추가
+- 🎫 JIRA 통합: 브랜치 이름에서 JIRA 이슈 번호 자동 감지 및 추가
+- `set-jira-integration` 명령어: JIRA 통합 활성화/비활성화
+- 환경변수 지원: `COMMITGEN_JIRA_INTEGRATION`
+- JIRA 이슈 자동 감지 알림 메시지
+
+### 변경
+- 브랜치 이름에서 JIRA 패턴 감지 시 자동으로 커밋 메시지에 추가
+- main, master, develop 브랜치는 JIRA 통합 제외
+
 ## [0.2.1] - 2024-12-19
 
 ### 수정
