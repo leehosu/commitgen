@@ -1,196 +1,46 @@
-# commitmate
+<div align="center">
 
-🤖 AI-powered Git commit message generator
+# 🤖 commitmate
 
-**[English](README.md)** | [한국어](docs/ko.md)
+**AI-powered Git commit message generator**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/leehosu/commitmate)](https://golang.org/)
 [![Release](https://img.shields.io/github/v/release/leehosu/commitmate)](https://github.com/leehosu/commitmate/releases)
 
->  **[Contributing](CONTRIBUTING.md)** | **[Changelog](CHANGELOG.md)**
+[English](README.md) | [한국어](docs/ko.md)
 
-## Features
+[Features](#features) • [Quick Start](#quick-start) • [Installation](#installation) • [Configuration](#configuration) • [Advanced](#advanced-features)
 
-- ✨ **AI-powered commit message generation**: Supports OpenAI GPT and Anthropic Claude
-- 📝 **Conventional Commits format**: Industry-standard commit message convention
-- 🌏 **Multilingual support**: Korean/English commit messages and UI
-- 🎫 **JIRA integration**: Auto-add JIRA issue numbers from branch names
-- 🎯 **Simple usage**: Commit with a single command
-- ⚙️ **Flexible configuration**: Choose API keys and providers
-- 🚀 **Cross-platform**: Linux, macOS, Windows support
+</div>
 
-## Installation
+---
 
-### Homebrew (Recommended) 🍺
+## ✨ Features
 
-```bash
-# Add tap
-brew tap leehosu/tap
+- 🤖 **AI-Powered** - OpenAI GPT & Anthropic Claude support
+- 📝 **Conventional Commits** - Industry-standard commit format
+- 🌏 **Multilingual** - Korean/English support for messages and UI
+- 🎫 **JIRA Integration** - Auto-detect and add issue numbers from branch names
+- 🎨 **Interactive UI** - Edit, regenerate, or cancel with simple prompts
+- ⚙️ **Flexible** - Configurable via CLI or environment variables
+- 🚀 **Cross-platform** - Linux, macOS, Windows
 
-# Install
-brew install commitmate
-
-# Verify
-commitmate version
-```
-
-### Binary Download
-
-Download the binary for your OS from the latest release:
-[Releases](https://github.com/leehosu/commitmate/releases)
+## 🚀 Quick Start
 
 ```bash
-# macOS/Linux
-tar -xzf commitmate_*_*.tar.gz
-chmod +x commitmate
-sudo mv commitmate /usr/local/bin/
-
-# Windows
-# Extract commitmate.exe and add to PATH
-```
-
-## Quick Start
-
-### 1. Set API Key
-
-**Using OpenAI:**
-```bash
+# 1. Set your API key
 commitmate config set-key openai sk-xxxxx
 commitmate config set-provider openai
-```
 
-**Using Claude:**
-```bash
-commitmate config set-key claude sk-ant-xxxxx
-commitmate config set-provider claude
-```
-
-### 2. Generate Commit
-
-```bash
-# After making changes
+# 2. Stage your changes
 git add .
 
-# AI automatically generates commit message and commits
+# 3. Generate and commit
 commitmate
 ```
 
-## Usage
-
-### Basic Commands
-
-```bash
-# Basic usage (analyze staged changes and commit)
-commitmate
-
-# Generate message only without committing
-commitmate --dry-run
-
-# Use specific AI provider (one-time)
-commitmate --provider openai
-commitmate --provider claude
-
-# Skip git hooks
-commitmate --no-verify
-```
-
-### Configuration Management
-
-```bash
-# Set API key
-commitmate config set-key openai sk-xxxxx
-commitmate config set-key claude sk-ant-xxxxx
-
-# Set default provider
-commitmate config set-provider openai
-
-# Change model
-commitmate config set-model openai gpt-4o-mini
-commitmate config set-model claude claude-3-5-haiku-20241022
-
-# Language settings
-commitmate config set-commit-language ko  # Commit message language (ko/en)
-commitmate config set-ui-language en      # UI language (ko/en)
-
-# Show current configuration
-commitmate config show
-
-# Check version
-commitmate version
-```
-
-### Environment Variables
-
-You can also configure using environment variables:
-
-```bash
-export COMMITMATE_OPENAI_API_KEY=sk-xxxxx
-export COMMITMATE_CLAUDE_API_KEY=sk-ant-xxxxx
-export COMMITMATE_PROVIDER=openai
-export COMMITMATE_COMMIT_LANGUAGE=ko  # Commit message language
-export COMMITMATE_UI_LANGUAGE=en      # UI language
-```
-
-## Conventional Commits
-
-commitmate follows the [Conventional Commits](https://www.conventionalcommits.org/) format:
-
-```
-<type>(<scope>): <subject>
-
-[optional body]
-
-[optional footer]
-```
-
-**Supported types:**
-- `feat`: A new feature
-- `fix`: A bug fix
-- `docs`: Documentation changes
-- `style`: Code formatting (no functional changes)
-- `refactor`: Code refactoring
-- `test`: Adding/modifying tests
-- `chore`: Build, config, and other changes
-- `perf`: Performance improvements
-- `ci`: CI configuration changes
-- `build`: Build system changes
-- `revert`: Revert previous commit
-
-## Multilingual Support
-
-commitmate supports both Korean and English for commit messages and UI:
-
-```bash
-# Commit message language (default: en)
-commitmate config set-commit-language en  # or ko
-
-# UI language (default: ko)
-commitmate config set-ui-language ko      # or en
-```
-
-## JIRA Integration
-
-commitmate **automatically** detects JIRA issue numbers from branch names and adds them to commit messages - no configuration needed!
-
-**Example:**
-```bash
-# Branch with JIRA issue
-git checkout -b DEVOPS2-430-add-user-feature
-commitmate
-# Result: [DEVOPS2-430] feat: add user authentication
-
-# Branch without JIRA issue
-git checkout -b feature/add-auth
-commitmate
-# Result: feat: add user authentication
-```
-
-**Supported patterns:** `PROJECT-123`, `ABC-456`, `DEVOPS2-430`
-
-**Note:** JIRA prefixes are not added on main, master, or develop branches.
-
-## Example
+## 📖 Example
 
 ```bash
 $ git add .
@@ -203,22 +53,149 @@ feat(auth): add JWT authentication middleware
 
 ? Do you want to use this commit message? 
   ▸ Yes - commit
-    Edit - edit and commit
+    Edit - edit message
     Regenerate - generate again
     Cancel
 
 ✓ Commit completed successfully!
 ```
 
+## 📦 Installation
 
-## License
+### Homebrew (Recommended)
 
-MIT License - See [LICENSE](LICENSE) file
+```bash
+brew tap leehosu/tap
+brew install commitmate
+```
 
-## Contributing
+### Binary Download
 
-Issues and PRs are welcome!
+Download from [Releases](https://github.com/leehosu/commitmate/releases)
 
-## Author
+```bash
+# macOS/Linux
+tar -xzf commitmate_*.tar.gz
+chmod +x commitmate
+sudo mv commitmate /usr/local/bin/
+
+# Windows
+# Extract commitmate.exe and add to PATH
+```
+
+## ⚙️ Configuration
+
+### Basic Setup
+
+```bash
+# API Keys
+commitmate config set-key openai sk-xxxxx
+commitmate config set-key claude sk-ant-xxxxx
+
+# Provider
+commitmate config set-provider openai  # or claude
+
+# Model (optional)
+commitmate config set-model openai gpt-4o-mini
+commitmate config set-model claude claude-3-5-haiku-20241022
+```
+
+### Language Settings
+
+```bash
+commitmate config set-commit-language en  # Commit message language (en/ko)
+commitmate config set-ui-language ko      # UI language (en/ko)
+```
+
+### View Configuration
+
+```bash
+commitmate config show
+```
+
+### Environment Variables
+
+```bash
+export COMMITMATE_OPENAI_API_KEY=sk-xxxxx
+export COMMITMATE_CLAUDE_API_KEY=sk-ant-xxxxx
+export COMMITMATE_PROVIDER=openai
+export COMMITMATE_COMMIT_LANGUAGE=ko
+export COMMITMATE_UI_LANGUAGE=en
+```
+
+## 💻 Usage
+
+```bash
+commitmate                  # Analyze and commit
+commitmate --dry-run        # Generate message only
+commitmate --provider openai  # Use specific provider
+commitmate --no-verify      # Skip git hooks
+```
+
+## 🎯 Advanced Features
+
+### Conventional Commits
+
+commitmate follows the [Conventional Commits](https://www.conventionalcommits.org/) format:
+
+```
+<type>(<scope>): <subject>
+```
+
+**Supported types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `build`, `revert`
+
+### JIRA Integration
+
+Automatically detects JIRA issue numbers from branch names:
+
+```bash
+# Branch: DEVOPS2-430-add-feature
+commitmate
+# Output: [DEVOPS2-430] feat: add user authentication
+
+# Branch: feature/add-auth
+commitmate
+# Output: feat: add user authentication
+```
+
+**Supported patterns:** `PROJECT-123`, `ABC-456`, `DEVOPS2-430`
+
+**Note:** JIRA prefixes are not added on `main`, `master`, or `develop` branches.
+
+### Multilingual Support
+
+Separate language settings for commit messages and UI:
+
+```bash
+# English commits, Korean UI (for Korean developers in global teams)
+commitmate config set-commit-language en
+commitmate config set-ui-language ko
+
+# Korean commits, English UI (for international developers in Korean companies)
+commitmate config set-commit-language ko
+commitmate config set-ui-language en
+```
+
+## 🤝 Contributing
+
+Issues and PRs are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## 📝 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history
+
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE)
+
+## 👤 Author
 
 [@leehosu](https://github.com/leehosu)
+
+---
+
+<div align="center">
+
+**⭐ Star this project if you find it helpful!**
+
+</div>
