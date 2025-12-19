@@ -42,23 +42,9 @@ commitmate
 
 ## Example
 
-```bash
-$ git add .
-$ commitmate
-
-🔍 Analyzing staged changes...
-✨ AI generated commit message:
-
-feat(auth): add JWT authentication middleware
-
-? Do you want to use this commit message? 
-  ▸ Yes - commit
-    Edit - edit message
-    Regenerate - generate again
-    Cancel
-
-✓ Commit completed successfully!
-```
+<div align="center">
+  <img src="docs/overview.gif" alt="commitmate demo" width="800">
+</div>
 
 ## Installation
 

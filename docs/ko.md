@@ -42,23 +42,9 @@ commitmate
 
 ## 예시
 
-```bash
-$ git add .
-$ commitmate
-
-🔍 Staged 변경사항 분석 중...
-✨ AI가 커밋 메시지를 생성했습니다:
-
-feat(auth): add JWT authentication middleware
-
-? 이 커밋 메시지를 사용하시겠습니까? 
-  ▸ Yes - 커밋 실행
-    Edit - 메시지 수정
-    Regenerate - 다시 생성
-    Cancel - 취소
-
-✓ 커밋이 완료되었습니다!
-```
+<div align="center">
+  <img src="overview.gif" alt="commitmate demo" width="800">
+</div>
 
 ## 설치
 
