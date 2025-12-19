@@ -159,99 +159,36 @@ commitmate follows the [Conventional Commits](https://www.conventionalcommits.or
 
 ## Multilingual Support
 
-commitmate supports both Korean and English:
-
-### Commit Message Language
-Configure the language for AI-generated commit messages:
+commitmate supports both Korean and English for commit messages and UI:
 
 ```bash
-# English commit messages (default, suitable for global teams)
-commitmate config set-commit-language en
+# Commit message language (default: en)
+commitmate config set-commit-language en  # or ko
 
-# Korean commit messages
-commitmate config set-commit-language ko
-```
-
-### UI Language
-Configure the CLI interface language:
-
-```bash
-# Korean UI (default)
-commitmate config set-ui-language ko
-
-# English UI
-commitmate config set-ui-language en
-```
-
-### Usage Scenarios
-
-**Scenario 1: Korean developer, global team**
-```bash
-commitmate config set-commit-language en  # English commit messages
-commitmate config set-ui-language ko      # Korean UI
-```
-
-**Scenario 2: International developer, Korean company**
-```bash
-commitmate config set-commit-language ko  # Korean commit messages
-commitmate config set-ui-language en      # English UI
-```
-
-**Scenario 3: All in English**
-```bash
-commitmate config set-commit-language en  # English commit messages
-commitmate config set-ui-language en      # English UI
+# UI language (default: ko)
+commitmate config set-ui-language ko      # or en
 ```
 
 ## JIRA Integration
 
 commitmate **automatically** detects JIRA issue numbers from branch names and adds them to commit messages - no configuration needed!
 
-### How it works
-
-Simply create a branch with a JIRA issue pattern (e.g., `PROJECT-123`, `DEVOPS2-430`) and commitmate will automatically detect and add it to your commit message.
-
-**With JIRA pattern:**
+**Example:**
 ```bash
-# Create branch with JIRA issue
+# Branch with JIRA issue
 git checkout -b DEVOPS2-430-add-user-feature
-
-# Generate commit
-git add .
 commitmate
-
 # Result: [DEVOPS2-430] feat: add user authentication
-```
 
-**Without JIRA pattern:**
-```bash
-# Regular branch name
+# Branch without JIRA issue
 git checkout -b feature/add-auth
-
-# Generate commit  
-git add .
 commitmate
-
-# Result: feat: add user authentication (no JIRA prefix)
+# Result: feat: add user authentication
 ```
 
-### Automatic behavior
+**Supported patterns:** `PROJECT-123`, `ABC-456`, `DEVOPS2-430`
 
-commitmate **always** works automatically:
-- ✅ Detects JIRA patterns in branch names
-- ✅ Adds `[ISSUE-123]` prefix if pattern is found
-- ✅ Skips prefix if no JIRA pattern exists
-- ✅ No configuration or environment variables needed
-- ✅ Excludes special branches (main, master, develop)
-
-### Supported patterns
-
-- `PROJECT-123`
-- `ABC-456`
-- `DEVOPS2-430`
-- Standard JIRA project key + number combinations
-
-**Note:** JIRA issue numbers are not added when on main, master, or develop branches.
+**Note:** JIRA prefixes are not added on main, master, or develop branches.
 
 ## Example
 
