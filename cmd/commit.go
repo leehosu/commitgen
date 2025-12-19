@@ -154,9 +154,13 @@ func runCommit() error {
 		case msg.PromptEdit:
 			// 수정 루프
 			for {
+				// 레이블 먼저 출력
+				fmt.Println()
+				color.Cyan("🛠️  %s", msg.EditPromptLabel)
+				
 				// 바로 수정 입력 화면으로
 				promptEdit := promptui.Prompt{
-					Label:   msg.EditPromptLabel,
+					Label:   "",
 					Default: commitMessage,
 				}
 				editedMessage, err := promptEdit.Run()
