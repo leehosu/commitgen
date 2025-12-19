@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"os"
 
@@ -43,18 +44,18 @@ func runCommit() error {
 	// 1. Git 저장소 확인
 	color.Cyan(msg.CheckingRepository)
 	if err := git.CheckRepository(); err != nil {
-		return fmt.Errorf(msg.ErrorNotGitRepo+": %w", err)
+		return fmt.Errorf("%s: %w", msg.ErrorNotGitRepo, err)
 	}
 
 	// 2. Staged 변경사항 가져오기
 	color.Cyan(msg.AnalyzingStagedChanges)
 	diff, err := git.GetStagedDiff()
 	if err != nil {
-		return fmt.Errorf(msg.ErrorNoStagedChanges+": %w", err)
+		return fmt.Errorf("%s: %w", msg.ErrorNoStagedChanges, err)
 	}
 
 	if diff == "" {
-		return fmt.Errorf(msg.NoChanges)
+		return errors.New(msg.NoChanges)
 	}
 
 	// Diff 크기가 크면 경고
@@ -70,7 +71,7 @@ func runCommit() error {
 	// 4. AI 클라이언트 생성
 	client, err := ai.NewClient(cfg)
 	if err != nil {
-		return fmt.Errorf(msg.ErrorCreateClient+"\n\n"+msg.HintSetAPIKey, err, cfg.Provider)
+		return fmt.Errorf("%s\n\n%s", fmt.Sprintf(msg.ErrorCreateClient, err), fmt.Sprintf(msg.HintSetAPIKey, cfg.Provider))
 	}
 
 	// 5. 커밋 메시지 생성
@@ -82,7 +83,7 @@ func runCommit() error {
 
 	commitMessage, err := client.GenerateCommitMessage(systemPrompt, userPrompt)
 	if err != nil {
-		return fmt.Errorf(msg.ErrorGenerateMessage+": %w", err)
+		return fmt.Errorf("%s: %w", msg.ErrorGenerateMessage, err)
 	}
 
 	// 6. 생성된 메시지 출력
@@ -112,7 +113,7 @@ func runCommit() error {
 
 		_, result, err := promptSelect.Run()
 		if err != nil {
-			return fmt.Errorf(msg.ErrorSelectFailed+": %w", err)
+			return fmt.Errorf("%s: %w", msg.ErrorSelectFailed, err)
 		}
 
 		switch result {
@@ -120,7 +121,7 @@ func runCommit() error {
 			// 8. 커밋 실행
 			color.Cyan(msg.Committing)
 			if err := git.Commit(commitMessage, noVerify); err != nil {
-				return fmt.Errorf(msg.ErrorCommitFailed+": %w", err)
+				return fmt.Errorf("%s: %w", msg.ErrorCommitFailed, err)
 			}
 			color.Green(msg.CommitSuccess)
 			return nil
@@ -133,13 +134,13 @@ func runCommit() error {
 			}
 			editedMessage, err := promptEdit.Run()
 			if err != nil {
-				return fmt.Errorf(msg.ErrorInputFailed+": %w", err)
+				return fmt.Errorf("%s: %w", msg.ErrorInputFailed, err)
 			}
 
 			// 수정된 메시지로 커밋
 			color.Cyan(msg.Committing)
 			if err := git.Commit(editedMessage, noVerify); err != nil {
-				return fmt.Errorf(msg.ErrorCommitFailed+": %w", err)
+				return fmt.Errorf("%s: %w", msg.ErrorCommitFailed, err)
 			}
 			color.Green(msg.CommitSuccess)
 			return nil
@@ -149,7 +150,7 @@ func runCommit() error {
 			color.Cyan(msg.RegeneratingMessage)
 			commitMessage, err = client.GenerateCommitMessage(systemPrompt, userPrompt)
 			if err != nil {
-				return fmt.Errorf(msg.ErrorGenerateMessage+": %w", err)
+				return fmt.Errorf("%s: %w", msg.ErrorGenerateMessage, err)
 			}
 
 			fmt.Println()
