@@ -1,61 +1,61 @@
-# 기여 가이드
+# Contributing Guide
 
-commitmate 프로젝트에 기여해주셔서 감사합니다! 🎉
+Thank you for contributing to the commitmate project! 🎉
 
-## 개발 환경 설정
+## Development Environment Setup
 
-### 필수 요구사항
+### Prerequisites
 
-- Go 1.21 이상
+- Go 1.21 or higher
 - Git
-- (선택) GoReleaser (릴리즈 테스트용)
+- (Optional) GoReleaser (for release testing)
 
-### 로컬 개발
+### Local Development
 
 ```bash
-# 저장소 클론
+# Clone the repository
 git clone https://github.com/leehosu/commitmate.git
 cd commitmate
 
-# 의존성 설치
+# Install dependencies
 go mod download
 
-# 빌드
+# Build
 go build -o commitmate
 
-# 실행
+# Run
 ./commitmate --help
 ```
 
-## 코드 기여하기
+## Contributing Code
 
-### 브랜치 전략
+### Branch Strategy
 
-- `main`: 안정 버전
-- `feature/*`: 새로운 기능
-- `fix/*`: 버그 수정
-- `docs/*`: 문서 변경
+- `main`: Stable version
+- `feature/*`: New features
+- `fix/*`: Bug fixes
+- `docs/*`: Documentation changes
 
-### Pull Request 프로세스
+### Pull Request Process
 
-1. 이슈를 먼저 생성하여 변경사항을 논의합니다
-2. Fork 후 브랜치를 생성합니다
+1. Create an issue first to discuss the changes
+2. Fork and create a branch
    ```bash
    git checkout -b feature/amazing-feature
    ```
-3. 변경사항을 커밋합니다 (Conventional Commits 형식)
+3. Commit your changes (using Conventional Commits format)
    ```bash
    git commit -m "feat: add amazing feature"
    ```
-4. 브랜치를 Push 합니다
+4. Push the branch
    ```bash
    git push origin feature/amazing-feature
    ```
-5. Pull Request를 생성합니다
+5. Create a Pull Request
 
-### 커밋 메시지 규칙
+### Commit Message Rules
 
-Conventional Commits 형식을 따릅니다:
+We follow the Conventional Commits format:
 
 ```
 <type>(<scope>): <subject>
@@ -65,67 +65,67 @@ Conventional Commits 형식을 따릅니다:
 [optional footer]
 ```
 
-**타입:**
-- `feat`: 새로운 기능
-- `fix`: 버그 수정
-- `docs`: 문서 변경
-- `style`: 코드 포맷팅
-- `refactor`: 리팩토링
-- `test`: 테스트 추가/수정
-- `chore`: 빌드, 설정 등
+**Types:**
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code formatting
+- `refactor`: Refactoring
+- `test`: Test additions/modifications
+- `chore`: Build, configuration, etc.
 
-**예시:**
+**Examples:**
 ```
 feat(ai): add support for GPT-4o-mini
 fix(config): resolve config file parsing error
 docs(readme): update installation instructions
 ```
 
-## 테스트
+## Testing
 
 ```bash
-# 단위 테스트 실행
+# Run unit tests
 go test ./...
 
-# 특정 패키지 테스트
+# Test specific package
 go test ./internal/ai
 
-# 커버리지 확인
+# Check coverage
 go test -cover ./...
 ```
 
-## 코드 스타일
+## Code Style
 
-- `gofmt`로 포맷팅
-- `golangci-lint`로 린팅
-- 명확하고 의미있는 변수/함수명 사용
-- 주석은 한국어 또는 영어로 작성
+- Format with `gofmt`
+- Lint with `golangci-lint`
+- Use clear and meaningful variable/function names
+- Comments can be written in Korean or English
 
-## 이슈 리포팅
+## Reporting Issues
 
-버그를 발견하셨나요? 이슈를 생성해주세요!
+Found a bug? Please create an issue!
 
-**포함할 내용:**
-- 예상 동작 vs 실제 동작
-- 재현 단계
-- 환경 정보 (OS, Go 버전 등)
-- 에러 메시지 및 로그
+**Include:**
+- Expected behavior vs actual behavior
+- Steps to reproduce
+- Environment information (OS, Go version, etc.)
+- Error messages and logs
 
-## 새로운 AI 제공자 추가하기
+## Adding a New AI Provider
 
-새로운 AI 제공자를 추가하려면:
+To add a new AI provider:
 
-1. `internal/ai/` 디렉토리에 새 파일 생성 (예: `gemini.go`)
-2. `Client` 인터페이스 구현
-3. `NewClient()` 함수에 새 제공자 추가
-4. 설정 구조체에 새 제공자 추가
-5. 테스트 작성
-6. README 업데이트
+1. Create a new file in `internal/ai/` directory (e.g., `gemini.go`)
+2. Implement the `Client` interface
+3. Add the new provider to `NewClient()` function
+4. Add the new provider to the configuration struct
+5. Write tests
+6. Update README
 
-## 라이선스
+## License
 
-기여하신 코드는 MIT 라이선스 하에 배포됩니다.
+Your contributed code will be distributed under the MIT license.
 
-## 질문이 있으신가요?
+## Have Questions?
 
-이슈를 생성하거나 토론을 시작해주세요!
+Please create an issue or start a discussion!
