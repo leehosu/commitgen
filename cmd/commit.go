@@ -152,9 +152,9 @@ func runCommit() error {
 			return nil
 
 		case msg.PromptEdit:
-			// 바로 수정 입력 화면으로
+			// 수정 루프
 			for {
-				// 메시지 수정
+				// 바로 수정 입력 화면으로
 				promptEdit := promptui.Prompt{
 					Label:   msg.EditPromptLabel,
 					Default: commitMessage,
@@ -207,7 +207,6 @@ func runCommit() error {
 				case msg.EditActionBack:
 					// 메인 선택 화면으로
 					fmt.Println()
-					break
 				}
 
 				// Back인 경우 수정 루프 종료
