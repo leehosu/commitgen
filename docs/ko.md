@@ -16,7 +16,7 @@
 
 ---
 
-## ✨ 특징
+## 특징
 
 - 🤖 **AI 기반** - OpenAI GPT & Anthropic Claude 지원
 - 📝 **Conventional Commits** - 업계 표준 커밋 메시지 형식
@@ -26,7 +26,7 @@
 - ⚙️ **유연한 설정** - CLI 또는 환경변수로 설정
 - 🚀 **크로스 플랫폼** - Linux, macOS, Windows
 
-## 🚀 빠른 시작
+## 빠른 시작
 
 ```bash
 # 1. API 키 설정
@@ -40,7 +40,7 @@ git add .
 commitmate
 ```
 
-## 📖 예시
+## 예시
 
 ```bash
 $ git add .
@@ -60,7 +60,7 @@ feat(auth): add JWT authentication middleware
 ✓ 커밋이 완료되었습니다!
 ```
 
-## 📦 설치
+## 설치
 
 ### Homebrew (추천)
 
@@ -83,7 +83,7 @@ sudo mv commitmate /usr/local/bin/
 # commitmate.exe를 압축 해제 후 PATH에 추가
 ```
 
-## ⚙️ 설정
+## 설정
 
 ### 기본 설정
 
@@ -123,7 +123,7 @@ export COMMITMATE_COMMIT_LANGUAGE=ko
 export COMMITMATE_UI_LANGUAGE=ko
 ```
 
-## 💻 사용법
+## 사용법
 
 ```bash
 commitmate                    # 분석 및 커밋
@@ -132,7 +132,7 @@ commitmate --provider openai  # 특정 제공자 사용
 commitmate --no-verify        # git hooks 무시
 ```
 
-## 🎯 고급 기능
+## 고급 기능
 
 ### Conventional Commits
 
@@ -176,19 +176,19 @@ commitmate config set-commit-language ko
 commitmate config set-ui-language en
 ```
 
-## 🤝 기여하기
+## 기여하기
 
 이슈와 PR을 환영합니다! [CONTRIBUTING.md](../CONTRIBUTING.md) 참조
 
-## 📝 변경 이력
+## 변경 이력
 
 릴리즈 히스토리는 [CHANGELOG.md](../CHANGELOG.md) 참조
 
-## 📄 라이선스
+## 라이선스
 
 MIT License - [LICENSE](../LICENSE) 참조
 
-## 👤 작성자
+## 작성자
 
 [@leehosu](https://github.com/leehosu)
 

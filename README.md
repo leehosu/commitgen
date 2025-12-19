@@ -16,7 +16,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 - 🤖 **AI-Powered** - OpenAI GPT & Anthropic Claude support
 - 📝 **Conventional Commits** - Industry-standard commit format
@@ -26,7 +26,7 @@
 - ⚙️ **Flexible** - Configurable via CLI or environment variables
 - 🚀 **Cross-platform** - Linux, macOS, Windows
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # 1. Set your API key
@@ -40,7 +40,7 @@ git add .
 commitmate
 ```
 
-## 📖 Example
+## Example
 
 ```bash
 $ git add .
@@ -60,7 +60,7 @@ feat(auth): add JWT authentication middleware
 ✓ Commit completed successfully!
 ```
 
-## 📦 Installation
+## Installation
 
 ### Homebrew (Recommended)
 
@@ -83,7 +83,7 @@ sudo mv commitmate /usr/local/bin/
 # Extract commitmate.exe and add to PATH
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ### Basic Setup
 
@@ -123,7 +123,7 @@ export COMMITMATE_COMMIT_LANGUAGE=ko
 export COMMITMATE_UI_LANGUAGE=en
 ```
 
-## 💻 Usage
+## Usage
 
 ```bash
 commitmate                  # Analyze and commit
@@ -132,7 +132,7 @@ commitmate --provider openai  # Use specific provider
 commitmate --no-verify      # Skip git hooks
 ```
 
-## 🎯 Advanced Features
+## Advanced Features
 
 ### Conventional Commits
 
@@ -176,19 +176,19 @@ commitmate config set-commit-language ko
 commitmate config set-ui-language en
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Issues and PRs are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## 📝 Changelog
+## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for release history
 
-## 📄 License
+## License
 
 MIT License - See [LICENSE](LICENSE)
 
-## 👤 Author
+## Author
 
 [@leehosu](https://github.com/leehosu)
 
