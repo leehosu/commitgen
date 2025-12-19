@@ -65,7 +65,7 @@ func getKoreanMessages() Messages {
 		ErrorGetConfigPath:   "설정을 불러올 수 없습니다: %v",
 
 		// Hint 메시지
-		HintSetAPIKey: "힌트: 'commitgen config set-key %s <API_KEY>' 명령어로 API 키를 설정하세요",
+		HintSetAPIKey: "힌트: 'commitmate config set-key %s <API_KEY>' 명령어로 API 키를 설정하세요",
 
 		// JIRA 통합
 		JiraIssueDetected: "🎫 JIRA 이슈 감지: %s",

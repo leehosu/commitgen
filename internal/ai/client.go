@@ -3,7 +3,7 @@ package ai
 import (
 	"fmt"
 
-	"github.com/leehosu/commitgen/internal/config"
+	"github.com/leehosu/commitmate/internal/config"
 )
 
 // Client는 AI 클라이언트 인터페이스입니다

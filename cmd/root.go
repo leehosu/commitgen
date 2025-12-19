@@ -17,9 +17,9 @@ var (
 
 // rootCmd는 인자 없이 호출될 때의 기본 명령어입니다
 var rootCmd = &cobra.Command{
-	Use:   "commitgen",
+	Use:   "commitmate",
 	Short: "AI 기반 Git 커밋 메시지 자동 생성 도구",
-	Long: `commitgen은 AI를 활용하여 Git의 staged 변경사항을 분석하고
+	Long: `commitmate는 AI를 활용하여 Git의 staged 변경사항을 분석하고
 자동으로 의미있는 커밋 메시지를 생성하여 커밋하는 도구입니다.
 
 OpenAI GPT와 Anthropic Claude를 지원하며,
@@ -42,7 +42,7 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	// 전역 플래그
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "설정 파일 경로 (기본값: $HOME/.commitgen/config.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "설정 파일 경로 (기본값: $HOME/.commitmate/config.yaml)")
 	rootCmd.PersistentFlags().StringVarP(&provider, "provider", "p", "", "AI 제공자 (openai 또는 claude)")
 
 	// 로컬 플래그
@@ -63,15 +63,15 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// .commitgen 디렉토리에서 설정 파일 찾기
-		configDir := home + "/.commitgen"
+		// .commitmate 디렉토리에서 설정 파일 찾기
+		configDir := home + "/.commitmate"
 		viper.AddConfigPath(configDir)
 		viper.SetConfigType("yaml")
 		viper.SetConfigName("config")
 	}
 
-	// 환경변수 읽기 (COMMITGEN_ 접두사)
-	viper.SetEnvPrefix("COMMITGEN")
+	// 환경변수 읽기 (COMMITMATE_ 접두사)
+	viper.SetEnvPrefix("COMMITMATE")
 	viper.AutomaticEnv()
 
 	// 설정 파일 읽기 (없어도 에러 무시)

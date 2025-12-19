@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/fatih/color"
-	"github.com/leehosu/commitgen/internal/config"
-	"github.com/leehosu/commitgen/internal/i18n"
+	"github.com/leehosu/commitmate/internal/config"
+	"github.com/leehosu/commitmate/internal/i18n"
 	"github.com/spf13/cobra"
 )
 

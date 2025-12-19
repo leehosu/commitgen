@@ -1,12 +1,12 @@
-# commitgen
+# commitmate
 
 🤖 AI-powered Git commit message generator
 
 **[English](README.md)** | [한국어](docs/ko.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/leehosu/commitgen)](https://golang.org/)
-[![Release](https://img.shields.io/github/v/release/leehosu/commitgen)](https://github.com/leehosu/commitgen/releases)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/leehosu/commitmate)](https://golang.org/)
+[![Release](https://img.shields.io/github/v/release/leehosu/commitmate)](https://github.com/leehosu/commitmate/releases)
 
 >  **[Contributing](CONTRIBUTING.md)** | **[Changelog](CHANGELOG.md)**
 
@@ -29,25 +29,25 @@
 brew tap leehosu/tap
 
 # Install
-brew install commitgen
+brew install commitmate
 
 # Verify
-commitgen version
+commitmate version
 ```
 
 ### Binary Download
 
 Download the binary for your OS from the latest release:
-[Releases](https://github.com/leehosu/commitgen/releases)
+[Releases](https://github.com/leehosu/commitmate/releases)
 
 ```bash
 # macOS/Linux
-tar -xzf commitgen_*_*.tar.gz
-chmod +x commitgen
-sudo mv commitgen /usr/local/bin/
+tar -xzf commitmate_*_*.tar.gz
+chmod +x commitmate
+sudo mv commitmate /usr/local/bin/
 
 # Windows
-# Extract commitgen.exe and add to PATH
+# Extract commitmate.exe and add to PATH
 ```
 
 ## Quick Start
@@ -56,14 +56,14 @@ sudo mv commitgen /usr/local/bin/
 
 **Using OpenAI:**
 ```bash
-commitgen config set-key openai sk-xxxxx
-commitgen config set-provider openai
+commitmate config set-key openai sk-xxxxx
+commitmate config set-provider openai
 ```
 
 **Using Claude:**
 ```bash
-commitgen config set-key claude sk-ant-xxxxx
-commitgen config set-provider claude
+commitmate config set-key claude sk-ant-xxxxx
+commitmate config set-provider claude
 ```
 
 ### 2. Generate Commit
@@ -73,7 +73,7 @@ commitgen config set-provider claude
 git add .
 
 # AI automatically generates commit message and commits
-commitgen
+commitmate
 ```
 
 ## Usage
@@ -82,46 +82,46 @@ commitgen
 
 ```bash
 # Basic usage (analyze staged changes and commit)
-commitgen
+commitmate
 
 # Generate message only without committing
-commitgen --dry-run
+commitmate --dry-run
 
 # Use specific AI provider (one-time)
-commitgen --provider openai
-commitgen --provider claude
+commitmate --provider openai
+commitmate --provider claude
 
 # Skip git hooks
-commitgen --no-verify
+commitmate --no-verify
 ```
 
 ### Configuration Management
 
 ```bash
 # Set API key
-commitgen config set-key openai sk-xxxxx
-commitgen config set-key claude sk-ant-xxxxx
+commitmate config set-key openai sk-xxxxx
+commitmate config set-key claude sk-ant-xxxxx
 
 # Set default provider
-commitgen config set-provider openai
+commitmate config set-provider openai
 
 # Change model
-commitgen config set-model openai gpt-4o-mini
-commitgen config set-model claude claude-3-5-haiku-20241022
+commitmate config set-model openai gpt-4o-mini
+commitmate config set-model claude claude-3-5-haiku-20241022
 
 # Language settings
-commitgen config set-commit-language ko  # Commit message language (ko/en)
-commitgen config set-ui-language en      # UI language (ko/en)
+commitmate config set-commit-language ko  # Commit message language (ko/en)
+commitmate config set-ui-language en      # UI language (ko/en)
 
 # JIRA integration
-commitgen config set-jira-integration true   # Enable JIRA integration
-commitgen config set-jira-integration false  # Disable JIRA integration
+commitmate config set-jira-integration true   # Enable JIRA integration
+commitmate config set-jira-integration false  # Disable JIRA integration
 
 # Show current configuration
-commitgen config show
+commitmate config show
 
 # Check version
-commitgen version
+commitmate version
 ```
 
 ### Environment Variables
@@ -129,17 +129,17 @@ commitgen version
 You can also configure using environment variables:
 
 ```bash
-export COMMITGEN_OPENAI_API_KEY=sk-xxxxx
-export COMMITGEN_CLAUDE_API_KEY=sk-ant-xxxxx
-export COMMITGEN_PROVIDER=openai
-export COMMITGEN_COMMIT_LANGUAGE=ko  # Commit message language
-export COMMITGEN_UI_LANGUAGE=en      # UI language
-export COMMITGEN_JIRA_INTEGRATION=true  # JIRA integration
+export COMMITMATE_OPENAI_API_KEY=sk-xxxxx
+export COMMITMATE_CLAUDE_API_KEY=sk-ant-xxxxx
+export COMMITMATE_PROVIDER=openai
+export COMMITMATE_COMMIT_LANGUAGE=ko  # Commit message language
+export COMMITMATE_UI_LANGUAGE=en      # UI language
+export COMMITMATE_JIRA_INTEGRATION=true  # JIRA integration
 ```
 
 ## Conventional Commits
 
-commitgen follows the [Conventional Commits](https://www.conventionalcommits.org/) format:
+commitmate follows the [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ```
 <type>(<scope>): <subject>
@@ -164,17 +164,17 @@ commitgen follows the [Conventional Commits](https://www.conventionalcommits.org
 
 ## Multilingual Support
 
-commitgen supports both Korean and English:
+commitmate supports both Korean and English:
 
 ### Commit Message Language
 Configure the language for AI-generated commit messages:
 
 ```bash
 # English commit messages (default, suitable for global teams)
-commitgen config set-commit-language en
+commitmate config set-commit-language en
 
 # Korean commit messages
-commitgen config set-commit-language ko
+commitmate config set-commit-language ko
 ```
 
 ### UI Language
@@ -182,35 +182,35 @@ Configure the CLI interface language:
 
 ```bash
 # Korean UI (default)
-commitgen config set-ui-language ko
+commitmate config set-ui-language ko
 
 # English UI
-commitgen config set-ui-language en
+commitmate config set-ui-language en
 ```
 
 ### Usage Scenarios
 
 **Scenario 1: Korean developer, global team**
 ```bash
-commitgen config set-commit-language en  # English commit messages
-commitgen config set-ui-language ko      # Korean UI
+commitmate config set-commit-language en  # English commit messages
+commitmate config set-ui-language ko      # Korean UI
 ```
 
 **Scenario 2: International developer, Korean company**
 ```bash
-commitgen config set-commit-language ko  # Korean commit messages
-commitgen config set-ui-language en      # English UI
+commitmate config set-commit-language ko  # Korean commit messages
+commitmate config set-ui-language en      # English UI
 ```
 
 **Scenario 3: All in English**
 ```bash
-commitgen config set-commit-language en  # English commit messages
-commitgen config set-ui-language en      # English UI
+commitmate config set-commit-language en  # English commit messages
+commitmate config set-ui-language en      # English UI
 ```
 
 ## JIRA Integration
 
-commitgen automatically detects JIRA issue numbers from branch names and adds them to commit messages.
+commitmate automatically detects JIRA issue numbers from branch names and adds them to commit messages.
 
 ### How it works
 
@@ -223,7 +223,7 @@ git checkout -b DEVOPS2-430-add-user-feature
 
 # Generate commit
 git add .
-commitgen
+commitmate
 
 # Result: [DEVOPS2-430] feat: add user authentication
 ```
@@ -232,10 +232,10 @@ commitgen
 
 ```bash
 # Enable JIRA integration (default)
-commitgen config set-jira-integration true
+commitmate config set-jira-integration true
 
 # Disable JIRA integration
-commitgen config set-jira-integration false
+commitmate config set-jira-integration false
 ```
 
 ### Supported patterns
@@ -251,7 +251,7 @@ commitgen config set-jira-integration false
 
 ```bash
 $ git add .
-$ commitgen
+$ commitmate
 
 🔍 Analyzing staged changes...
 ✨ AI generated commit message:

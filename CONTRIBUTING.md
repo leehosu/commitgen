@@ -1,6 +1,6 @@
 # 기여 가이드
 
-commitgen 프로젝트에 기여해주셔서 감사합니다! 🎉
+commitmate 프로젝트에 기여해주셔서 감사합니다! 🎉
 
 ## 개발 환경 설정
 
@@ -14,17 +14,17 @@ commitgen 프로젝트에 기여해주셔서 감사합니다! 🎉
 
 ```bash
 # 저장소 클론
-git clone https://github.com/leehosu/commitgen.git
-cd commitgen
+git clone https://github.com/leehosu/commitmate.git
+cd commitmate
 
 # 의존성 설치
 go mod download
 
 # 빌드
-go build -o commitgen
+go build -o commitmate
 
 # 실행
-./commitgen --help
+./commitmate --help
 ```
 
 ## 코드 기여하기

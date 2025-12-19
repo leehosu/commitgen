@@ -24,9 +24,9 @@ builds:
         goarch: arm64
     ldflags:
       - -s -w
-      - -X github.com/leehosu/commitgen/cmd.version={{.Version}}
-      - -X github.com/leehosu/commitgen/cmd.commit={{.Commit}}
-      - -X github.com/leehosu/commitgen/cmd.date={{.Date}}
+      - -X github.com/leehosu/commitmate/cmd.version={{.Version}}
+      - -X github.com/leehosu/commitmate/cmd.commit={{.Commit}}
+      - -X github.com/leehosu/commitmate/cmd.date={{.Date}}
 
 archives:
   - id: commitgen
@@ -50,13 +50,13 @@ checksum:
 
 # Homebrew tap 자동 업데이트
 brews:
-  - name: commitgen
+  - name: commitmate
     repository:
       owner: leehosu
       name: homebrew-tap
       token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
     directory: Formula
-    homepage: https://github.com/leehosu/commitgen
+    homepage: https://github.com/leehosu/commitmate
     description: "AI-powered Git commit message generator"
     license: MIT
     dependencies:
@@ -93,7 +93,7 @@ changelog:
 release:
   github:
     owner: leehosu
-    name: commitgen
+    name: commitmate
   draft: false
   prerelease: auto
   mode: append
@@ -123,5 +123,5 @@ release:
     
     ### Go install
     ```bash
-    go install github.com/leehosu/commitgen@latest
+    go install github.com/leehosu/commitmate@latest
     ```

@@ -19,7 +19,27 @@
 ### 제거
 - 없음
 
-## [0.3.0] - 2024-12-19
+## [1.0.0] - 2024-12-19
+
+### 변경 (Breaking Changes)
+- 🔄 **프로젝트 이름 변경: commitgen → commitmate**
+- 모듈 경로: `github.com/leehosu/commitgen` → `github.com/leehosu/commitmate`
+- 환경변수 접두사: `COMMITGEN_` → `COMMITMATE_`
+- 설정 폴더: `~/.commitgen` → `~/.commitmate`
+- Homebrew 패키지: `brew install commitgen` → `brew install commitmate`
+- 이진 파일 이름: `commitgen` → `commitmate`
+
+### 추가
+- 🎫 JIRA 통합: 브랜치 이름에서 JIRA 이슈 번호 자동 감지 및 추가
+- `set-jira-integration` 명령어: JIRA 통합 활성화/비활성화
+- 환경변수 지원: `COMMITMATE_JIRA_INTEGRATION`
+- JIRA 이슈 자동 감지 알림 메시지
+
+### 참고
+- main, master, develop 브랜치는 JIRA 통합 제외
+- 이전 버전(commitgen)에서 마이그레이션 필요
+
+## [0.3.0] - 2024-12-19 (commitgen)
 
 ### 추가
 - 🎫 JIRA 통합: 브랜치 이름에서 JIRA 이슈 번호 자동 감지 및 추가
@@ -31,13 +51,13 @@
 - 브랜치 이름에서 JIRA 패턴 감지 시 자동으로 커밋 메시지에 추가
 - main, master, develop 브랜치는 JIRA 통합 제외
 
-## [0.2.1] - 2024-12-19
+## [0.2.1] - 2024-12-19 (commitgen)
 
 ### 수정
 - fmt.Errorf의 비상수 포맷 문자열 오류 수정
 - 에러 처리 코드 개선
 
-## [0.2.0] - 2024-12-19
+## [0.2.0] - 2024-12-19 (commitgen)
 
 ### 추가
 - 🌏 다국어 지원: 커밋 메시지와 UI 언어를 독립적으로 설정 가능
@@ -59,7 +79,7 @@
 - 한국 개발자를 위한 유연한 언어 조합 설정
 - 4가지 언어 시나리오 지원 (en+en, en+ko, ko+en, ko+ko)
 
-## [0.1.1] - 2024-12-18
+## [0.1.1] - 2024-12-18 (commitgen)
 
 ### 추가
 - Rate limit 에러 감지 및 친절한 에러 메시지
@@ -74,7 +94,7 @@
 - OpenAI 및 Claude rate limit 처리 개선
 - 큰 변경사항으로 인한 토큰 초과 문제 해결
 
-## [0.1.0] - 2025-12-18
+## [0.1.0] - 2024-12-18 (commitgen)
 
 ### 추가
 - 초기 릴리즈

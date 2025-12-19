@@ -65,7 +65,7 @@ func getEnglishMessages() Messages {
 		ErrorGetConfigPath:   "Failed to load configuration: %v",
 
 		// Hint messages
-		HintSetAPIKey: "Hint: Set API key with 'commitgen config set-key %s <API_KEY>'",
+		HintSetAPIKey: "Hint: Set API key with 'commitmate config set-key %s <API_KEY>'",
 
 		// JIRA integration
 		JiraIssueDetected: "🎫 JIRA issue detected: %s",

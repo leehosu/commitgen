@@ -1,12 +1,12 @@
-# commitgen
+# commitmate
 
 🤖 AI 기반 Git 커밋 메시지 자동 생성 도구
 
 [English](../README.md) | **[한국어](ko.md)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/leehosu/commitgen)](https://golang.org/)
-[![Release](https://img.shields.io/github/v/release/leehosu/commitgen)](https://github.com/leehosu/commitgen/releases)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/leehosu/commitmate)](https://golang.org/)
+[![Release](https://img.shields.io/github/v/release/leehosu/commitmate)](https://github.com/leehosu/commitmate/releases)
 
 >  **[기여하기](../CONTRIBUTING.md)** | **[변경 이력](../CHANGELOG.md)**
 
@@ -28,25 +28,25 @@
 brew tap leehosu/tap
 
 # 설치
-brew install commitgen
+brew install commitmate
 
 # 확인
-commitgen version
+commitmate version
 ```
 
 ### 바이너리 다운로드
 
 최신 릴리즈에서 OS에 맞는 바이너리를 다운로드하세요:
-[Releases](https://github.com/leehosu/commitgen/releases)
+[Releases](https://github.com/leehosu/commitmate/releases)
 
 ```bash
 # macOS/Linux
-tar -xzf commitgen_*_*.tar.gz
-chmod +x commitgen
-sudo mv commitgen /usr/local/bin/
+tar -xzf commitmate_*_*.tar.gz
+chmod +x commitmate
+sudo mv commitmate /usr/local/bin/
 
 # Windows
-# commitgen.exe를 압축 해제 후 PATH에 추가
+# commitmate.exe를 압축 해제 후 PATH에 추가
 ```
 
 ## 빠른 시작
@@ -55,14 +55,14 @@ sudo mv commitgen /usr/local/bin/
 
 **OpenAI 사용:**
 ```bash
-commitgen config set-key openai sk-xxxxx
-commitgen config set-provider openai
+commitmate config set-key openai sk-xxxxx
+commitmate config set-provider openai
 ```
 
 **Claude 사용:**
 ```bash
-commitgen config set-key claude sk-ant-xxxxx
-commitgen config set-provider claude
+commitmate config set-key claude sk-ant-xxxxx
+commitmate config set-provider claude
 ```
 
 ### 2. 커밋 생성
@@ -72,7 +72,7 @@ commitgen config set-provider claude
 git add .
 
 # AI가 자동으로 커밋 메시지 생성 및 커밋
-commitgen
+commitmate
 ```
 
 ## 사용법
@@ -81,42 +81,42 @@ commitgen
 
 ```bash
 # 기본 사용 (staged 변경사항 분석 및 자동 커밋)
-commitgen
+commitmate
 
 # 커밋 메시지만 생성하고 커밋하지 않음
-commitgen --dry-run
+commitmate --dry-run
 
 # 특정 AI 제공자 사용 (일회성)
-commitgen --provider openai
-commitgen --provider claude
+commitmate --provider openai
+commitmate --provider claude
 
 # git hooks 무시
-commitgen --no-verify
+commitmate --no-verify
 ```
 
 ### 설정 관리
 
 ```bash
 # API 키 설정
-commitgen config set-key openai sk-xxxxx
-commitgen config set-key claude sk-ant-xxxxx
+commitmate config set-key openai sk-xxxxx
+commitmate config set-key claude sk-ant-xxxxx
 
 # 기본 제공자 설정
-commitgen config set-provider openai
+commitmate config set-provider openai
 
 # 모델 변경
-commitgen config set-model openai gpt-4o-mini
-commitgen config set-model claude claude-3-5-haiku-20241022
+commitmate config set-model openai gpt-4o-mini
+commitmate config set-model claude claude-3-5-haiku-20241022
 
 # 언어 설정
-commitgen config set-commit-language ko  # 커밋 메시지 언어 (ko/en)
-commitgen config set-ui-language en      # UI 언어 (ko/en)
+commitmate config set-commit-language ko  # 커밋 메시지 언어 (ko/en)
+commitmate config set-ui-language en      # UI 언어 (ko/en)
 
 # 현재 설정 확인
-commitgen config show
+commitmate config show
 
 # 버전 확인
-commitgen version
+commitmate version
 ```
 
 ### 환경변수
@@ -124,16 +124,16 @@ commitgen version
 설정 파일 대신 환경변수로도 설정 가능:
 
 ```bash
-export COMMITGEN_OPENAI_API_KEY=sk-xxxxx
-export COMMITGEN_CLAUDE_API_KEY=sk-ant-xxxxx
-export COMMITGEN_PROVIDER=openai
-export COMMITGEN_COMMIT_LANGUAGE=ko  # 커밋 메시지 언어
-export COMMITGEN_UI_LANGUAGE=en      # UI 언어
+export COMMITMATE_OPENAI_API_KEY=sk-xxxxx
+export COMMITMATE_CLAUDE_API_KEY=sk-ant-xxxxx
+export COMMITMATE_PROVIDER=openai
+export COMMITMATE_COMMIT_LANGUAGE=ko  # 커밋 메시지 언어
+export COMMITMATE_UI_LANGUAGE=en      # UI 언어
 ```
 
 ## Conventional Commits
 
-commitgen은 [Conventional Commits](https://www.conventionalcommits.org/) 형식을 따릅니다:
+commitmate는 [Conventional Commits](https://www.conventionalcommits.org/) 형식을 따릅니다:
 
 ```
 <type>(<scope>): <subject>
@@ -158,17 +158,17 @@ commitgen은 [Conventional Commits](https://www.conventionalcommits.org/) 형식
 
 ## 다국어 지원
 
-commitgen은 한글과 영어를 지원합니다:
+commitmate는 한글과 영어를 지원합니다:
 
 ### 커밋 메시지 언어
 AI가 생성하는 커밋 메시지의 언어를 설정할 수 있습니다:
 
 ```bash
 # 영어 커밋 메시지 (기본값, 글로벌 협업에 적합)
-commitgen config set-commit-language en
+commitmate config set-commit-language en
 
 # 한글 커밋 메시지
-commitgen config set-commit-language ko
+commitmate config set-commit-language ko
 ```
 
 ### UI 언어
@@ -176,35 +176,35 @@ CLI 인터페이스의 언어를 설정할 수 있습니다:
 
 ```bash
 # 한글 UI (기본값)
-commitgen config set-ui-language ko
+commitmate config set-ui-language ko
 
 # 영어 UI
-commitgen config set-ui-language en
+commitmate config set-ui-language en
 ```
 
 ### 사용 시나리오
 
 **시나리오 1: 한국인 개발자, 글로벌 팀**
 ```bash
-commitgen config set-commit-language en  # 영어 커밋 메시지
-commitgen config set-ui-language ko      # 한글 UI
+commitmate config set-commit-language en  # 영어 커밋 메시지
+commitmate config set-ui-language ko      # 한글 UI
 ```
 
 **시나리오 2: 외국인 개발자, 한국 회사**
 ```bash
-commitgen config set-commit-language ko  # 한글 커밋 메시지
-commitgen config set-ui-language en      # 영어 UI
+commitmate config set-commit-language ko  # 한글 커밋 메시지
+commitmate config set-ui-language en      # 영어 UI
 ```
 
 **시나리오 3: 모두 영어**
 ```bash
-commitgen config set-commit-language en  # 영어 커밋 메시지
-commitgen config set-ui-language en      # 영어 UI
+commitmate config set-commit-language en  # 영어 커밋 메시지
+commitmate config set-ui-language en      # 영어 UI
 ```
 
 ## JIRA 통합
 
-commitgen은 브랜치 이름에서 JIRA 이슈 번호를 자동으로 감지하여 커밋 메시지에 추가합니다.
+commitmate는 브랜치 이름에서 JIRA 이슈 번호를 자동으로 감지하여 커밋 메시지에 추가합니다.
 
 ### 작동 방식
 
@@ -217,7 +217,7 @@ git checkout -b DEVOPS2-430-add-user-feature
 
 # 커밋 생성
 git add .
-commitgen
+commitmate
 
 # 결과: [DEVOPS2-430] feat: add user authentication
 ```
@@ -226,10 +226,10 @@ commitgen
 
 ```bash
 # JIRA 통합 활성화 (기본값)
-commitgen config set-jira-integration true
+commitmate config set-jira-integration true
 
 # JIRA 통합 비활성화
-commitgen config set-jira-integration false
+commitmate config set-jira-integration false
 ```
 
 ### 지원하는 패턴
@@ -245,7 +245,7 @@ commitgen config set-jira-integration false
 
 ```bash
 $ git add .
-$ commitgen
+$ commitmate
 
 🔍 Staged 변경사항 분석 중...
 ✨ AI가 커밋 메시지를 생성했습니다:

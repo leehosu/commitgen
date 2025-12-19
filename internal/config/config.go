@@ -65,7 +65,7 @@ func Load() (*Config, error) {
 	}
 
 	// Viper 설정
-	configDir := filepath.Join(home, ".commitgen")
+	configDir := filepath.Join(home, ".commitmate")
 	configFile := filepath.Join(configDir, "config.yaml")
 
 	// 설정 파일이 존재하는지 확인
@@ -81,22 +81,22 @@ func Load() (*Config, error) {
 	}
 
 	// 환경변수로 덮어쓰기 (최우선)
-	if apiKey := os.Getenv("COMMITGEN_OPENAI_API_KEY"); apiKey != "" {
+	if apiKey := os.Getenv("COMMITMATE_OPENAI_API_KEY"); apiKey != "" {
 		cfg.OpenAI.APIKey = apiKey
 	}
-	if apiKey := os.Getenv("COMMITGEN_CLAUDE_API_KEY"); apiKey != "" {
+	if apiKey := os.Getenv("COMMITMATE_CLAUDE_API_KEY"); apiKey != "" {
 		cfg.Claude.APIKey = apiKey
 	}
-	if provider := os.Getenv("COMMITGEN_PROVIDER"); provider != "" {
+	if provider := os.Getenv("COMMITMATE_PROVIDER"); provider != "" {
 		cfg.Provider = provider
 	}
-	if commitLang := os.Getenv("COMMITGEN_COMMIT_LANGUAGE"); commitLang != "" {
+	if commitLang := os.Getenv("COMMITMATE_COMMIT_LANGUAGE"); commitLang != "" {
 		cfg.CommitLanguage = commitLang
 	}
-	if uiLang := os.Getenv("COMMITGEN_UI_LANGUAGE"); uiLang != "" {
+	if uiLang := os.Getenv("COMMITMATE_UI_LANGUAGE"); uiLang != "" {
 		cfg.UILanguage = uiLang
 	}
-	if jiraIntegration := os.Getenv("COMMITGEN_JIRA_INTEGRATION"); jiraIntegration != "" {
+	if jiraIntegration := os.Getenv("COMMITMATE_JIRA_INTEGRATION"); jiraIntegration != "" {
 		cfg.JiraIntegration = jiraIntegration == "true"
 	}
 
@@ -110,7 +110,7 @@ func Save(cfg *Config) error {
 		return fmt.Errorf("홈 디렉토리를 찾을 수 없습니다: %w", err)
 	}
 
-	configDir := filepath.Join(home, ".commitgen")
+	configDir := filepath.Join(home, ".commitmate")
 	configFile := filepath.Join(configDir, "config.yaml")
 
 	// 디렉토리가 없으면 생성
@@ -139,5 +139,5 @@ func GetConfigPath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(home, ".commitgen", "config.yaml"), nil
+	return filepath.Join(home, ".commitmate", "config.yaml"), nil
 }

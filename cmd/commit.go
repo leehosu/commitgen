@@ -6,11 +6,11 @@ import (
 	"os"
 
 	"github.com/fatih/color"
-	"github.com/leehosu/commitgen/internal/ai"
-	"github.com/leehosu/commitgen/internal/config"
-	"github.com/leehosu/commitgen/internal/git"
-	"github.com/leehosu/commitgen/internal/i18n"
-	"github.com/leehosu/commitgen/internal/prompt"
+	"github.com/leehosu/commitmate/internal/ai"
+	"github.com/leehosu/commitmate/internal/config"
+	"github.com/leehosu/commitmate/internal/git"
+	"github.com/leehosu/commitmate/internal/i18n"
+	"github.com/leehosu/commitmate/internal/prompt"
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 )
