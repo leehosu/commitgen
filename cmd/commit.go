@@ -158,10 +158,18 @@ func runCommit() error {
 				fmt.Println()
 				color.Cyan("🛠️  %s", msg.EditPromptLabel)
 				
-				// 바로 수정 입력 화면으로
+				// 바로 수정 입력 화면으로 (콜론 제거)
+				templates := &promptui.PromptTemplates{
+					Prompt:  "{{ . }} ",
+					Valid:   "{{ . | green }} ",
+					Invalid: "{{ . | red }} ",
+					Success: "{{ . | bold | green }} ",
+				}
+				
 				promptEdit := promptui.Prompt{
-					Label:   "",
-					Default: commitMessage,
+					Label:     "✔",
+					Default:   commitMessage,
+					Templates: templates,
 				}
 				editedMessage, err := promptEdit.Run()
 				if err != nil {
