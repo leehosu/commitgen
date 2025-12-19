@@ -152,22 +152,64 @@ func runCommit() error {
 			return nil
 
 		case msg.PromptEdit:
-			// 수정 프롬프트
-			promptEdit := promptui.Prompt{
-				Label:   msg.EditPromptLabel,
-				Default: commitMessage,
-			}
-			editedMessage, err := promptEdit.Run()
-			if err != nil {
-				return fmt.Errorf("%s: %w", msg.ErrorInputFailed, err)
-			}
+			// 수정 메뉴 루프
+			for {
+				selectEdit := promptui.Select{
+					Label: msg.EditMenuLabel,
+					Items: []string{
+						msg.EditMenuEdit,
+						msg.EditMenuUseMessage,
+						msg.EditMenuBack,
+					},
+				}
+				_, editResult, err := selectEdit.Run()
+				if err != nil {
+					return fmt.Errorf("%s: %w", msg.ErrorSelectFailed, err)
+				}
 
-			// 수정된 메시지 표시 및 다시 선택 화면으로
-			commitMessage = editedMessage
-			fmt.Println()
-			color.Green(msg.EditedMessage)
-			color.Yellow("%s", commitMessage)
-			fmt.Println()
+				switch editResult {
+				case msg.EditMenuEdit:
+					// 메시지 수정
+					promptEdit := promptui.Prompt{
+						Label:   msg.EditPromptLabel,
+						Default: commitMessage,
+					}
+					editedMessage, err := promptEdit.Run()
+					if err != nil {
+						// Ctrl+C 등으로 취소하면 수정 메뉴로 돌아감
+						continue
+					}
+
+					// 수정된 메시지 표시
+					commitMessage = editedMessage
+					fmt.Println()
+					color.Green(msg.EditedMessage)
+					color.Yellow("%s", commitMessage)
+					fmt.Println()
+					// 수정 후 다시 수정 메뉴로
+					continue
+
+				case msg.EditMenuUseMessage:
+					// 현재 메시지로 커밋
+					color.Cyan(msg.Committing)
+					if err := git.Commit(commitMessage, noVerify); err != nil {
+						return fmt.Errorf("%s: %w", msg.ErrorCommitFailed, err)
+					}
+					color.Green(msg.CommitSuccess)
+					return nil
+
+				case msg.EditMenuBack:
+					// 뒤로가기 - 메인 선택 화면으로
+					fmt.Println()
+					break
+				}
+
+				// EditMenuBack인 경우 수정 메뉴 루프 종료
+				if editResult == msg.EditMenuBack {
+					break
+				}
+			}
+			// 메인 선택 화면으로 돌아감
 			continue
 
 		case msg.PromptRegenerate:

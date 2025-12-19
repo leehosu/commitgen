@@ -22,12 +22,16 @@ func getEnglishMessages() Messages {
 		DryRunMode:      "ℹ️  --dry-run mode: not committing",
 
 		// Prompts
-		PromptLabel:      "Do you want to use this commit message?",
-		PromptYes:        "✓ Yes - commit",
-		PromptEdit:       "✎ Edit - edit and commit",
-		PromptRegenerate: "↻ Regenerate - generate again",
-		PromptCancel:     "✗ Cancel",
-		EditPromptLabel:  "Commit message",
+		PromptLabel:         "Do you want to use this commit message?",
+		PromptYes:           "✓ Yes - commit",
+		PromptEdit:          "✎ Edit - edit and commit",
+		PromptRegenerate:    "↻ Regenerate - generate again",
+		PromptCancel:        "✗ Cancel",
+		EditPromptLabel:     "Commit message",
+		EditMenuLabel:       "What would you like to do?",
+		EditMenuEdit:        "✎ Edit - edit message",
+		EditMenuUseMessage:  "✓ Use - commit with this message",
+		EditMenuBack:        "↩️  Back - go back",
 
 		// Config
 		ConfigTitle:           "📋 Current configuration:",

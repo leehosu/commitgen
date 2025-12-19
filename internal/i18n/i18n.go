@@ -16,18 +16,23 @@ type Messages struct {
 	EditedMessage       string
 
 	// 커밋 작업
-	Committing    string
-	CommitSuccess string
+	Committing      string
+	CommitSuccess   string
 	CommitCancelled string
-	DryRunMode    string
+	EditCancelled   string
+	DryRunMode      string
 
 	// 프롬프트
-	PromptLabel      string
-	PromptYes        string
-	PromptEdit       string
-	PromptRegenerate string
-	PromptCancel     string
-	EditPromptLabel  string
+	PromptLabel         string
+	PromptYes           string
+	PromptEdit          string
+	PromptRegenerate    string
+	PromptCancel        string
+	EditPromptLabel     string
+	EditMenuLabel       string
+	EditMenuEdit        string
+	EditMenuUseMessage  string
+	EditMenuBack        string
 
 	// Config
 	ConfigTitle          string
