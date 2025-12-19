@@ -7,8 +7,8 @@ before:
     - go test ./...
 
 builds:
-  - id: commitgen
-    binary: commitgen
+  - id: commitmate
+    binary: commitmate
     env:
       - CGO_ENABLED=0
     goos:
@@ -29,7 +29,7 @@ builds:
       - -X github.com/leehosu/commitmate/cmd.date={{.Date}}
 
 archives:
-  - id: commitgen
+  - id: commitmate
     format: tar.gz
     name_template: >-
       {{ .ProjectName }}_
@@ -62,9 +62,9 @@ brews:
     dependencies:
       - name: git
     test: |
-      system "#{bin}/commitgen", "version"
+      system "#{bin}/commitmate", "version"
     install: |
-      bin.install "commitgen"
+      bin.install "commitmate"
 
 changelog:
   sort: asc
@@ -104,16 +104,16 @@ release:
     ### Homebrew (macOS/Linux) 🍺
     ```bash
     brew tap leehosu/tap
-    brew install commitgen
+    brew install commitmate
     ```
     
     ### 바이너리 다운로드
     
     **macOS/Linux:**
     ```bash
-    tar -xzf commitgen_*_*.tar.gz
-    chmod +x commitgen
-    sudo mv commitgen /usr/local/bin/
+    tar -xzf commitmate_*_*.tar.gz
+    chmod +x commitmate
+    sudo mv commitmate /usr/local/bin/
     ```
     
     **Windows:**
