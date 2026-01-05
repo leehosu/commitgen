@@ -19,6 +19,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Nothing
 
+## [1.1.7] - 2025-01-05
+
+### Fixed
+- 🐛 **Fixed config set-key command not saving API keys**
+  - Fixed nested struct serialization issue in Viper
+  - Changed from `viper.Set("openai", cfg.OpenAI)` to dot notation
+  - Now properly saves all config fields to ~/.commitmate/config.yaml
+  - API keys set via `config set-key` command are now persisted correctly
+
+### Technical
+- 🔧 **Improved config save mechanism**: Use dot notation for nested struct fields
+- ✅ **Verified fix**: Both OpenAI and Claude API keys now save and load properly
+
 ## [1.1.6] - 2024-12-19
 
 ### Fixed
