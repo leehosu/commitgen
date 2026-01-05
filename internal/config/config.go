@@ -117,8 +117,12 @@ func Save(cfg *Config) error {
 	viper.Set("commit_language", cfg.CommitLanguage)
 	viper.Set("ui_language", cfg.UILanguage)
 	viper.Set("template", cfg.Template)
-	viper.Set("openai", cfg.OpenAI)
-	viper.Set("claude", cfg.Claude)
+	viper.Set("openai.api_key", cfg.OpenAI.APIKey)
+	viper.Set("openai.model", cfg.OpenAI.Model)
+	viper.Set("openai.max_tokens", cfg.OpenAI.MaxTokens)
+	viper.Set("claude.api_key", cfg.Claude.APIKey)
+	viper.Set("claude.model", cfg.Claude.Model)
+	viper.Set("claude.max_tokens", cfg.Claude.MaxTokens)
 
 	if err := viper.WriteConfigAs(configFile); err != nil {
 		return fmt.Errorf("설정 파일 저장 실패: %w", err)
