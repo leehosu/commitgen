@@ -7,17 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Nothing
+### Fixed
+- 🐛 **Fixed regenerate producing identical commit messages**
+  - Regeneration now uses higher temperature (1.0 vs 0.7) for more diversity
+  - AI receives context about previous message to generate different alternatives
+  - Added `GetRegenerateSystemPrompt` function that includes previous message in prompt
+  - Added `GenerateOptions` struct to control temperature and pass previous message
+  - Ensures each regeneration produces a unique commit message
 
 ### Changed
-- Nothing
+- ♻️ **Refactored AI client interface**: Added `GenerateOptions` parameter for better control
+- 🎨 **Improved regeneration UX**: AI now generates truly different alternatives
 
-### Fixed
-- Nothing
-
-### Removed
-- Nothing
+### Technical
+- 🔧 **Enhanced prompt engineering**: Context-aware regeneration prompts
+- 📦 **Better AI configuration**: Flexible options for generation parameters
 
 ## [1.1.7] - 2025-01-05
 

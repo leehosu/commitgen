@@ -56,7 +56,7 @@ type claudeError struct {
 }
 
 // GenerateCommitMessage는 Claude API를 사용하여 커밋 메시지를 생성합니다
-func (c *ClaudeClient) GenerateCommitMessage(systemPrompt, userPrompt string) (string, error) {
+func (c *ClaudeClient) GenerateCommitMessage(systemPrompt, userPrompt string, opts GenerateOptions) (string, error) {
 	reqBody := claudeRequest{
 		Model:     c.model,
 		MaxTokens: c.maxTokens,
@@ -67,7 +67,7 @@ func (c *ClaudeClient) GenerateCommitMessage(systemPrompt, userPrompt string) (s
 			},
 		},
 		System:      systemPrompt,
-		Temperature: 0.7,
+		Temperature: opts.Temperature,
 	}
 
 	jsonData, err := json.Marshal(reqBody)

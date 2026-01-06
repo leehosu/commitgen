@@ -92,7 +92,8 @@ func runCommit() error {
 	systemPrompt := prompt.GetSystemPrompt(cfg.CommitLanguage, cfg.Template)
 	userPrompt := prompt.GetUserPrompt(diff)
 
-	commitMessage, err := client.GenerateCommitMessage(systemPrompt, userPrompt)
+	// 기본 옵션으로 첫 메시지 생성
+	commitMessage, err := client.GenerateCommitMessage(systemPrompt, userPrompt, ai.DefaultGenerateOptions())
 	if err != nil {
 		return fmt.Errorf("%s: %w", msg.ErrorGenerateMessage, err)
 	}
@@ -230,9 +231,17 @@ func runCommit() error {
 			continue
 
 		case msg.PromptRegenerate:
-			// 다시 생성
+			// 다시 생성 - 이전 메시지를 포함한 재생성 프롬프트 사용
 			color.Cyan(msg.RegeneratingMessage)
-			commitMessage, err = client.GenerateCommitMessage(systemPrompt, userPrompt)
+			
+			// JIRA 이슈가 포함된 경우 원본 메시지 저장
+			previousMessage := commitMessage
+			
+			// 재생성용 시스템 프롬프트 생성 (이전 메시지 포함)
+			regenerateSystemPrompt := prompt.GetRegenerateSystemPrompt(cfg.CommitLanguage, cfg.Template, previousMessage)
+			
+			// 더 높은 temperature로 재생성
+			commitMessage, err = client.GenerateCommitMessage(regenerateSystemPrompt, userPrompt, ai.RegenerateOptions(previousMessage))
 			if err != nil {
 				return fmt.Errorf("%s: %w", msg.ErrorGenerateMessage, err)
 			}

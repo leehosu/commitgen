@@ -10,6 +10,35 @@ func GetSystemPrompt(language, template string) string {
 	return getSimplePrompt(language)
 }
 
+// GetRegenerateSystemPrompt는 재생성 시 사용할 시스템 프롬프트를 생성합니다
+func GetRegenerateSystemPrompt(language, template, previousMessage string) string {
+	basePrompt := GetSystemPrompt(language, template)
+	
+	if language == "ko" {
+		return fmt.Sprintf(`%s
+
+중요: 이전에 다음과 같은 메시지를 생성했습니다:
+"%s"
+
+이번에는 동일한 변경사항에 대해 다른 관점이나 표현으로 새로운 커밋 메시지를 생성하세요.
+- 다른 타입을 사용할 수 있다면 시도하세요
+- 다른 단어나 표현을 사용하세요
+- 강조하는 부분을 다르게 할 수 있습니다
+- 절대 이전 메시지와 동일한 메시지를 생성하지 마세요`, basePrompt, previousMessage)
+	}
+	
+	return fmt.Sprintf(`%s
+
+IMPORTANT: Previously generated message was:
+"%s"
+
+Generate a NEW commit message with a different perspective or expression for the same changes:
+- Try a different type if applicable
+- Use different words or expressions
+- Emphasize different aspects
+- NEVER generate the same message as before`, basePrompt, previousMessage)
+}
+
 // getConventionalCommitsPrompt는 Conventional Commits 형식의 프롬프트를 반환합니다
 func getConventionalCommitsPrompt(language string) string {
 	if language == "ko" {

@@ -26,7 +26,7 @@ func NewOpenAIClient(apiKey, model string, maxTokens int) *OpenAIClient {
 }
 
 // GenerateCommitMessage는 OpenAI API를 사용하여 커밋 메시지를 생성합니다
-func (c *OpenAIClient) GenerateCommitMessage(systemPrompt, userPrompt string) (string, error) {
+func (c *OpenAIClient) GenerateCommitMessage(systemPrompt, userPrompt string, opts GenerateOptions) (string, error) {
 	ctx := context.Background()
 
 	resp, err := c.client.CreateChatCompletion(
@@ -44,7 +44,7 @@ func (c *OpenAIClient) GenerateCommitMessage(systemPrompt, userPrompt string) (s
 				},
 			},
 			MaxTokens:   c.maxTokens,
-			Temperature: 0.7,
+			Temperature: float32(opts.Temperature),
 		},
 	)
 
