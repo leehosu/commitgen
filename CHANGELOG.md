@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-01-10
+
+### Added
+- 🔐 **GPG signing support**
+  - Add `gpg_sign` config option in `~/.commitmate/config.yaml`
+  - Add `-S/--gpg-sign` flag to enable GPG signing
+  - Add `--no-gpg-sign` flag to disable GPG signing
+  - Support `COMMITMATE_GPG_SIGN` environment variable
+  - Add `commitmate config set-gpg-sign` command
+  - Display GPG signing status during commit (`🔐 GPG 서명: 활성화/비활성화`)
+  - Connect TTY for GPG pinentry support
+
 ### Fixed
 - 🐛 **Fixed regenerate producing identical commit messages**
   - Regeneration now uses higher temperature (1.0 vs 0.7) for more diversity
