@@ -5,6 +5,7 @@ func getKoreanMessages() Messages {
 		// Git 작업
 		CheckingRepository:     "🔍 Git 저장소 확인 중...",
 		AnalyzingStagedChanges: "📝 Staged 변경사항 분석 중...",
+		GPGSignStatus:          "🔐 GPG 서명: %s",
 		LargeChangesWarning:    "⚠️  변경사항이 큽니다 (%d 바이트). 요약된 정보만 전달됩니다.",
 		NoChanges:              "커밋할 변경사항이 없습니다. 'git add' 명령어를 먼저 실행하세요",
 
@@ -40,6 +41,7 @@ func getKoreanMessages() Messages {
 		ConfigCommitLanguage: "커밋 메시지 언어: %s",
 		ConfigUILanguage:     "UI 언어: %s",
 		ConfigTemplate:       "템플릿: %s",
+		ConfigGPGSign:        "GPG 서명: %v",
 		OpenAISettings:       "OpenAI 설정:",
 		ClaudeSettings:       "Claude 설정:",
 		APIKeyLabel:          "  API 키: %s",
@@ -53,6 +55,7 @@ func getKoreanMessages() Messages {
 		ModelSet:          "✓ %s 모델이 %s로 설정되었습니다",
 		CommitLanguageSet: "✓ 커밋 메시지 언어가 %s로 설정되었습니다",
 		UILanguageSet:     "✓ UI 언어가 %s로 설정되었습니다",
+		GPGSignSet:        "✓ GPG 서명이 %v로 설정되었습니다",
 
 		// 에러 메시지
 		ErrorNotGitRepo:      "Git 저장소가 아닙니다",
