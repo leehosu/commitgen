@@ -5,6 +5,7 @@ type Messages struct {
 	// Git 작업
 	CheckingRepository     string
 	AnalyzingStagedChanges string
+	GPGSignStatus          string
 	LargeChangesWarning    string
 	NoChanges              string
 
@@ -40,6 +41,7 @@ type Messages struct {
 	ConfigCommitLanguage string
 	ConfigUILanguage     string
 	ConfigTemplate       string
+	ConfigGPGSign        string
 	OpenAISettings       string
 	ClaudeSettings       string
 	APIKeyLabel          string
@@ -53,6 +55,7 @@ type Messages struct {
 	ModelSet          string
 	CommitLanguageSet string
 	UILanguageSet     string
+	GPGSignSet        string
 
 	// 에러 메시지
 	ErrorNotGitRepo         string

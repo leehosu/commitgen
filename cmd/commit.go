@@ -39,6 +39,52 @@ func init() {
 	rootCmd.AddCommand(commitCmd)
 }
 
+// getGPGSignStatus는 현재 GPG 서명 상태를 문자열로 반환합니다
+func getGPGSignStatus(cfg *config.Config, msg i18n.Messages) string {
+	if noGPGSign {
+		if cfg.UILanguage == "ko" {
+			return "비활성화 (--no-gpg-sign)"
+		}
+		return "disabled (--no-gpg-sign)"
+	} else if gpgSign {
+		if cfg.UILanguage == "ko" {
+			return "활성화 (-S)"
+		}
+		return "enabled (-S)"
+	} else if cfg.GPGSign {
+		if cfg.UILanguage == "ko" {
+			return "활성화 (설정)"
+		}
+		return "enabled (config)"
+	}
+	if cfg.UILanguage == "ko" {
+		return "비활성화"
+	}
+	return "disabled"
+}
+
+// getCommitOptions는 설정값과 플래그를 조합하여 CommitOptions를 반환합니다
+// 우선순위: 플래그 > 설정 파일
+func getCommitOptions(cfg *config.Config) git.CommitOptions {
+	opts := git.CommitOptions{
+		NoVerify: noVerify,
+	}
+	
+	// GPG 서명 처리: 플래그가 명시적으로 지정되면 플래그 우선
+	if noGPGSign {
+		// --no-gpg-sign 플래그가 지정되면 서명 비활성화
+		opts.NoGPGSign = true
+	} else if gpgSign {
+		// -S / --gpg-sign 플래그가 지정되면 서명 활성화
+		opts.GPGSign = true
+	} else if cfg.GPGSign {
+		// 플래그 미지정 시 설정 파일 값 사용
+		opts.GPGSign = true
+	}
+	
+	return opts
+}
+
 func runCommit() error {
 	// 3. 설정 로드
 	cfg, err := config.Load()
@@ -64,6 +110,10 @@ func runCommit() error {
 	if err != nil {
 		return fmt.Errorf("%s: %w", msg.ErrorNoStagedChanges, err)
 	}
+
+	// GPG 서명 상태 표시
+	gpgStatus := getGPGSignStatus(cfg, msg)
+	color.Cyan(msg.GPGSignStatus, gpgStatus)
 
 	if diff == "" {
 		return errors.New(msg.NoChanges)
@@ -146,7 +196,7 @@ func runCommit() error {
 		case msg.PromptYes:
 			// 8. 커밋 실행
 			color.Cyan(msg.Committing)
-			if err := git.Commit(commitMessage, noVerify); err != nil {
+			if err := git.Commit(commitMessage, getCommitOptions(cfg)); err != nil {
 				return fmt.Errorf("%s: %w", msg.ErrorCommitFailed, err)
 			}
 			color.Green(msg.CommitSuccess)
@@ -206,7 +256,7 @@ func runCommit() error {
 				case msg.EditActionUseMessage:
 					// 현재 메시지로 커밋
 					color.Cyan(msg.Committing)
-					if err := git.Commit(commitMessage, noVerify); err != nil {
+					if err := git.Commit(commitMessage, getCommitOptions(cfg)); err != nil {
 						return fmt.Errorf("%s: %w", msg.ErrorCommitFailed, err)
 					}
 					color.Green(msg.CommitSuccess)

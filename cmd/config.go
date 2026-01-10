@@ -150,6 +150,7 @@ var showCmd = &cobra.Command{
 		color.White(msg.ConfigCommitLanguage, cfg.CommitLanguage)
 		color.White(msg.ConfigUILanguage, cfg.UILanguage)
 		color.White(msg.ConfigTemplate, cfg.Template)
+		color.White(msg.ConfigGPGSign, cfg.GPGSign)
 		fmt.Println()
 
 		color.Yellow(msg.OpenAISettings)
@@ -251,6 +252,39 @@ func maskAPIKey(key string) string {
 	return key[:4] + "..." + key[len(key)-4:]
 }
 
+var setGPGSignCmd = &cobra.Command{
+	Use:   "set-gpg-sign [true|false]",
+	Short: "GPG 서명 사용 여부를 설정합니다",
+	Long:  `커밋 시 GPG 서명을 기본으로 사용할지 설정합니다.`,
+	Example: `  commitmate config set-gpg-sign true
+  commitmate config set-gpg-sign false`,
+	Args: cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		value := args[0]
+
+		cfg, err := config.Load()
+		if err != nil {
+			cfg = config.Default()
+		}
+
+		msg := i18n.GetMessages(cfg.UILanguage)
+
+		if value != "true" && value != "false" {
+			color.Red("❌ " + msg.ErrorInvalidBoolValue)
+			os.Exit(1)
+		}
+
+		cfg.GPGSign = value == "true"
+
+		if err := config.Save(cfg); err != nil {
+			color.Red("❌ "+msg.ErrorSaveConfig, err)
+			os.Exit(1)
+		}
+
+		color.Green(msg.GPGSignSet, cfg.GPGSign)
+	},
+}
+
 func init() {
 	rootCmd.AddCommand(configCmd)
 	configCmd.AddCommand(setKeyCmd)
@@ -258,5 +292,6 @@ func init() {
 	configCmd.AddCommand(setModelCmd)
 	configCmd.AddCommand(setCommitLanguageCmd)
 	configCmd.AddCommand(setUILanguageCmd)
+	configCmd.AddCommand(setGPGSignCmd)
 	configCmd.AddCommand(showCmd)
 }

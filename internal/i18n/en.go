@@ -5,6 +5,7 @@ func getEnglishMessages() Messages {
 		// Git operations
 		CheckingRepository:     "🔍 Checking repository...",
 		AnalyzingStagedChanges: "📝 Analyzing staged changes...",
+		GPGSignStatus:          "🔐 GPG signing: %s",
 		LargeChangesWarning:    "⚠️  Large changes detected (%d bytes). Only summarized information will be sent.",
 		NoChanges:              "No changes to commit. Please run 'git add' first",
 
@@ -35,13 +36,14 @@ func getEnglishMessages() Messages {
 		EditActionBack:        "↩️  Back - go back",
 
 		// Config
-		ConfigTitle:           "📋 Current configuration:",
+		ConfigTitle:          "📋 Current configuration:",
 		ConfigProvider:       "Default provider: %s",
 		ConfigCommitLanguage: "Commit message language: %s",
 		ConfigUILanguage:     "UI language: %s",
 		ConfigTemplate:       "Template: %s",
+		ConfigGPGSign:        "GPG sign: %v",
 		OpenAISettings:       "OpenAI settings:",
-		ClaudeSettings:        "Claude settings:",
+		ClaudeSettings:       "Claude settings:",
 		APIKeyLabel:           "  API key: %s",
 		APIKeyNotSet:          "  API key: (not set)",
 		ModelLabel:            "  Model: %s",
@@ -53,6 +55,7 @@ func getEnglishMessages() Messages {
 		ModelSet:          "✓ %s model set to %s",
 		CommitLanguageSet: "✓ Commit message language set to %s",
 		UILanguageSet:     "✓ UI language set to %s",
+		GPGSignSet:        "✓ GPG sign set to %v",
 
 		// Error messages
 		ErrorNotGitRepo:      "Not a git repository",

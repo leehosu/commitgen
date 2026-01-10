@@ -9,10 +9,12 @@ import (
 )
 
 var (
-	cfgFile  string
-	provider string
-	dryRun   bool
-	noVerify bool
+	cfgFile   string
+	provider  string
+	dryRun    bool
+	noVerify  bool
+	gpgSign   bool
+	noGPGSign bool
 )
 
 // rootCmd는 인자 없이 호출될 때의 기본 명령어입니다
@@ -48,6 +50,8 @@ func init() {
 	// 로컬 플래그
 	rootCmd.Flags().BoolVar(&dryRun, "dry-run", false, "커밋 메시지만 생성하고 커밋하지 않음")
 	rootCmd.Flags().BoolVar(&noVerify, "no-verify", false, "git commit hooks 무시")
+	rootCmd.Flags().BoolVarP(&gpgSign, "gpg-sign", "S", false, "GPG 서명으로 커밋")
+	rootCmd.Flags().BoolVar(&noGPGSign, "no-gpg-sign", false, "GPG 서명 비활성화")
 }
 
 // initConfig는 설정 파일과 환경변수를 읽습니다
