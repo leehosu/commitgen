@@ -28,6 +28,7 @@
 - 📝 **Conventional Commits** - 업계 표준 커밋 메시지 형식
 - 🌏 **다국어 지원** - 한글/영어 메시지 및 UI 지원
 - 🎫 **JIRA 통합** - 브랜치 이름에서 이슈 번호 자동 감지
+- 🔐 **GPG 서명** - GPG 키로 커밋 서명
 - 🎨 **인터랙티브 UI** - 간단한 프롬프트로 수정, 재생성, 취소
 - ⚙️ **유연한 설정** - CLI 또는 환경변수로 설정
 - 🚀 **크로스 플랫폼** - Linux, macOS, Windows
@@ -93,6 +94,13 @@ commitmate config set-commit-language ko  # 커밋 메시지 언어 (ko/en)
 commitmate config set-ui-language ko      # UI 언어 (ko/en)
 ```
 
+### GPG 서명
+
+```bash
+commitmate config set-gpg-sign true   # 기본적으로 GPG 서명 활성화
+commitmate config set-gpg-sign false  # GPG 서명 비활성화
+```
+
 ### 설정 확인
 
 ```bash
@@ -107,6 +115,7 @@ export COMMITMATE_CLAUDE_API_KEY=sk-ant-xxxxx
 export COMMITMATE_PROVIDER=openai
 export COMMITMATE_COMMIT_LANGUAGE=ko
 export COMMITMATE_UI_LANGUAGE=ko
+export COMMITMATE_GPG_SIGN=true
 ```
 
 ## 사용법
@@ -116,6 +125,8 @@ commitmate                    # 분석 및 커밋
 commitmate --dry-run          # 메시지만 생성
 commitmate --provider openai  # 특정 제공자 사용
 commitmate --no-verify        # git hooks 무시
+commitmate -S                 # GPG 서명 활성화
+commitmate --no-gpg-sign      # GPG 서명 비활성화
 ```
 
 ## 고급 기능

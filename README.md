@@ -28,6 +28,7 @@
 - 📝 **Conventional Commits** - Industry-standard commit format
 - 🌏 **Multilingual** - Korean/English support for messages and UI
 - 🎫 **JIRA Integration** - Auto-detect and add issue numbers from branch names
+- 🔐 **GPG Signing** - Sign commits with GPG keys
 - 🎨 **Interactive UI** - Edit, regenerate, or cancel with simple prompts
 - ⚙️ **Flexible** - Configurable via CLI or environment variables
 - 🚀 **Cross-platform** - Linux, macOS, Windows
@@ -93,6 +94,13 @@ commitmate config set-commit-language en  # Commit message language (en/ko)
 commitmate config set-ui-language ko      # UI language (en/ko)
 ```
 
+### GPG Signing
+
+```bash
+commitmate config set-gpg-sign true   # Enable GPG signing by default
+commitmate config set-gpg-sign false  # Disable GPG signing
+```
+
 ### View Configuration
 
 ```bash
@@ -107,6 +115,7 @@ export COMMITMATE_CLAUDE_API_KEY=sk-ant-xxxxx
 export COMMITMATE_PROVIDER=openai
 export COMMITMATE_COMMIT_LANGUAGE=ko
 export COMMITMATE_UI_LANGUAGE=en
+export COMMITMATE_GPG_SIGN=true
 ```
 
 ## Usage
@@ -116,6 +125,8 @@ commitmate                  # Analyze and commit
 commitmate --dry-run        # Generate message only
 commitmate --provider openai  # Use specific provider
 commitmate --no-verify      # Skip git hooks
+commitmate -S               # Enable GPG signing
+commitmate --no-gpg-sign    # Disable GPG signing
 ```
 
 ## Advanced Features
