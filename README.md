@@ -33,6 +33,11 @@
 - ⚙️ **Flexible** - Configurable via CLI or environment variables
 - 🚀 **Cross-platform** - Linux, macOS, Windows
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=leehosu/commitmate&type=date&legend=top-left)](https://www.star-history.com/#leehosu/commitmate&type=date&legend=top-left)
+
+
 ## Quick Start
 
 ```bash

@@ -33,6 +33,11 @@
 - ⚙️ **유연한 설정** - CLI 또는 환경변수로 설정
 - 🚀 **크로스 플랫폼** - Linux, macOS, Windows
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=leehosu/commitmate&type=date&legend=top-left)](https://www.star-history.com/#leehosu/commitmate&type=date&legend=top-left)
+
+
 ## 빠른 시작
 
 ```bash
